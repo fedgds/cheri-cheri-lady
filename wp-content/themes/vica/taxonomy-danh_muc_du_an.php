@@ -50,8 +50,7 @@ get_header(); ?>
                                 </a>
                             </div>
                         </div>
-                        <?php  } ?>
-                    <?php  } else{ ?>
+                    <?php } } else{ ?>
                         <p class="hollow">Không có dự án nào</p>
                     <?php } ?>
                     </div>

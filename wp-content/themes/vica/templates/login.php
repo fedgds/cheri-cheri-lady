@@ -14,7 +14,7 @@ get_header(); ?>
                 <div class="description">
                     <p>Torem ipsum dolor sit amet, consectetur adipiscing.</p>
                 </div>
-                <form action="">
+                <form action="<?= esc_url(home_url('/wp-login.php')); ?>">
                     <div class="idOrEmail">
                         <label for="idOrEmail">Mã hội viên hoặc Email</label>
                         <input type="text" id="idOrEmail" placeholder="abcd1234@gmail.com">

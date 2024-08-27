@@ -3,6 +3,9 @@
 $id = get_the_ID();
 $images = get_field('list_image', $id);
 
+// var_dump($images);
+// die;
+
 $url = get_template_directory_uri();
 get_header(); ?>
 <main>

@@ -61,7 +61,7 @@ get_header(); ?>
                     </div>
                     <div class="section-input line-3">
                         <label for="course">Khóa học tham gia</label>
-                        <input type="text" id="course" value="Chương trình đào tạo nấu món Nhật Bản">
+                        <input type="text" id="course" value="<?php the_title(); ?>">
                     </div>
                 </div>
                 <div class="button">

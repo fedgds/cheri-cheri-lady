@@ -176,3 +176,20 @@ if ( defined( 'JETPACK__VERSION' ) ) {
 	require get_template_directory() . '/inc/jetpack.php';
 }
 
+function update_post_views() {
+    if (is_single()) {
+        $post_id = get_the_ID();
+        $news = get_field('news', $post_id);
+        
+        if (isset($news['views'])) {
+            $views = intval($news['views']) + 1;
+        } else {
+            $views = 1;
+        }
+
+        $news['views'] = $views;
+        update_field('news', $news, $post_id);
+    }
+}
+add_action('wp', 'update_post_views');
+

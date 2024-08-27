@@ -57,10 +57,10 @@ get_header(); ?>
                             </div>
                         </div>
                         <?php endwhile; 
-                                wp_reset_postdata();
-                                else : ?>
-                                <p>Không có dự án nào trong danh mục này.</p>
-                            <?php endif; ?>
+                            wp_reset_postdata();
+                            else : ?>
+                            <p>Không có dự án nào trong danh mục này.</p>
+                        <?php endif; ?>
                     </div>
                     <?php if ($project_count >= 1) : ?>
                         <div class="view-more">
