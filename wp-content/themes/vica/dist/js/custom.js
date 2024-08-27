@@ -96,43 +96,24 @@ document.addEventListener('DOMContentLoaded', function () {
 
 // Tab list partner
 document.addEventListener('DOMContentLoaded', function () {
-    const tabPlatinum = document.getElementById('tab-platinum');
-    const tabVip = document.getElementById('tab-vip');
-    const tabCooperate = document.getElementById('tab-cooperate');
-    const tabMedia = document.getElementById('tab-media');
+    const tabs = document.querySelectorAll('.list-choose li');
+    const partners = document.querySelectorAll('.list-partner .child');
 
-    const partnerPlatinum = document.getElementById('partner-platinum');
-    const partnerVip = document.getElementById('partner-vip');
-    const partnerCooperate = document.getElementById('partner-cooperate');
-    const partnerMedia = document.getElementById('partner-media');
-
-    tabPlatinum.addEventListener('click', () => {
-        setActiveTab(tabPlatinum, partnerPlatinum);
+    tabs.forEach((tab, index) => {
+        tab.addEventListener('click', () => {
+            setActiveTab(index);
+        });
     });
 
-    tabVip.addEventListener('click', () => {
-        setActiveTab(tabVip, partnerVip);
-    });
+    function setActiveTab(activeIndex) {
+        tabs.forEach(t => t.classList.remove('active'));
+        partners.forEach(p => p.classList.remove('active'));
 
-    tabCooperate.addEventListener('click', () => {
-        setActiveTab(tabCooperate, partnerCooperate);
-    });
-
-    tabMedia.addEventListener('click', () => {
-        setActiveTab(tabMedia, partnerMedia);
-    });
-
-
-    function setActiveTab(tab, content) {
-        // Remove active class from all tabs and contents
-        document.querySelectorAll('.list-choose li').forEach(t => t.classList.remove('active'));
-        document.querySelectorAll('.list-partner .child').forEach(c => c.classList.remove('active'));
-
-        // Add active class to clicked tab and corresponding content
-        tab.classList.add('active');
-        content.classList.add('active');
+        tabs[activeIndex].classList.add('active');
+        partners[activeIndex].classList.add('active');
     }
 });
+
 // End tab list partner
 
 // Tab form subscribe member

@@ -1,3 +1,6 @@
+<?php 
+$url = get_template_directory_uri();
+?>
 <section class="section-banner">
     <div class="background"></div>
     <div class="content">

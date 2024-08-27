@@ -5693,6 +5693,12 @@ main .section-list-member .container-member .left .individual-member .list-membe
        column-gap: 9.25rem;
   margin-bottom: 3rem;
 }
+@media only screen and (max-width: 480px) {
+  main .section-list-member .container-member .left .individual-member .list-member {
+    -moz-column-gap: 0rem;
+         column-gap: 0rem;
+  }
+}
 main .section-list-member .container-member .left .individual-member .list-member .child {
   display: flex;
   gap: 1rem;
@@ -6427,8 +6433,30 @@ main .section-list-training .container-training .left form button:hover {
   color: #ED1E29;
   background-color: var(--white);
 }
+main .section-list-training .container-training .left h2.course-name {
+  font-family: var(--f-body);
+  color: #1D1D1D;
+  font-size: 2rem;
+  font-weight: 700;
+  line-height: 150%;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+}
+@media only screen and (max-width: 1060px) {
+  main .section-list-training .container-training .left h2.course-name {
+    font-size: 1.75rem;
+    margin-top: 1.5rem;
+  }
+}
+@media only screen and (max-width: 767px) {
+  main .section-list-training .container-training .left h2.course-name {
+    font-size: 1.25rem;
+    margin-bottom: 1rem;
+  }
+}
 main .section-list-training .container-training .left .course {
   margin-top: 3rem;
+  margin-bottom: 2rem;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   row-gap: 1.5rem;
@@ -6440,7 +6468,12 @@ main .section-list-training .container-training .left .course {
     grid-template-columns: 1fr 1fr;
     -moz-column-gap: 1rem;
          column-gap: 1rem;
+    margin-bottom: 2rem;
   }
+}
+main .section-list-training .container-training .left .course .hollow {
+  width: 100%;
+  font-family: var(--f-body);
 }
 main .section-list-training .container-training .left .course .child {
   border-radius: 1rem;
@@ -6509,6 +6542,30 @@ main .section-list-training .container-training .left .course .child .content .t
 }
 main .section-list-training .container-training .left .course .child .content .trainer {
   flex-direction: column;
+}
+main .section-list-training .container-training .left .view-more {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+main .section-list-training .container-training .left .view-more a {
+  color: #ED1E29;
+  border: 1px solid #ED1E29;
+  background-color: var(--white);
+  padding: 0.6875rem 3rem;
+  font-size: 0.875rem;
+  font-weight: 700;
+  line-height: 150%;
+  border-radius: 3.125rem;
+}
+@media only screen and (max-width: 767px) {
+  main .section-list-training .container-training .left .view-more a {
+    padding: 0.5rem 2rem;
+  }
+}
+main .section-list-training .container-training .left .view-more a:hover {
+  background-color: #ED1E29;
+  color: var(--white);
 }
 main .section-detail-training {
   position: relative;
@@ -8933,6 +8990,25 @@ main .section-list-database .container-database .left .group-search {
   background: var(--HEADER, #FFF);
   box-shadow: 0px 20px 60px 0px rgba(224, 161, 161, 0.05);
 }
+main .section-list-database .container-database .left .group-search .search-date-1, main .section-list-database .container-database .left .group-search .search-date-2 {
+  position: relative;
+  padding-left: 1rem;
+}
+@media only screen and (max-width: 1480px) {
+  main .section-list-database .container-database .left .group-search .search-date-1, main .section-list-database .container-database .left .group-search .search-date-2 {
+    padding-left: 0.5rem;
+  }
+}
+main .section-list-database .container-database .left .group-search .search-date-1::before, main .section-list-database .container-database .left .group-search .search-date-2::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  height: 50%;
+  width: 1px;
+  background-color: #999;
+}
 main .section-list-database .container-database .left .group-search .item {
   display: flex;
   gap: 0.625rem;
@@ -8944,12 +9020,10 @@ main .section-list-database .container-database .left .group-search .item .icon 
 }
 main .section-list-database .container-database .left .group-search .item select {
   border: none;
-  border-right: 1px solid #999;
 }
 main .section-list-database .container-database .left .group-search .item input {
   padding-right: 0.625rem;
   border: none;
-  border-right: 1px solid #999;
 }
 main .section-list-database .container-database .left .group-search .item input::-moz-placeholder {
   color: var(--Text-400, #999);

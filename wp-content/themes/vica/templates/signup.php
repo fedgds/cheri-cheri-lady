@@ -1,4 +1,7 @@
-<?php include('header.php') ?>
+<?php 
+/* Template Name: signup */
+$url = get_template_directory_uri();
+get_header(); ?>
 <main>
     <section class="sign-up-page">
         <div class="left">
@@ -37,7 +40,7 @@
                     </div>
                     <div class="login">
                         <p>Bạn đã có tài khoản?</p>
-                        <a href="http://localhost/project-vica/login.php">Đăng nhập ngay</a>
+                        <a href="<?= home_url() ?>/dang-nhap">Đăng nhập ngay</a>
                     </div>
                 </form>
             </div>
@@ -86,4 +89,4 @@
         </div>
     </section>
 </main>
-<?php include('footer.php') ?>
+<?php get_footer(); ?>

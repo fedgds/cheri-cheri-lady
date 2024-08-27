@@ -1,5 +1,13 @@
 <?php 
 /* Template Name: member */
+$args = array(
+    'taxonomy' => 'danh_muc_hoi_vien',
+    'orderby' => 'name',
+    'hide_empty' => false, 
+);
+
+$categories = get_terms($args);
+
 $url = get_template_directory_uri();
 get_header(); ?>
 <main>
@@ -17,69 +25,59 @@ get_header(); ?>
                     <input type="text" id="search-member" placeholder="Tìm kiếm hội viên...">
                     <button>Tìm kiếm</button>
                 </form>
-                <div class="business-member">
-                    <h2>Hội viên Doanh nghiệp</h2>
-                    <div class="list-member">
-                        <div class="child">
-                            <img src="<?= $url ?>/dist/images/business-member-1.png" alt="">
-                            <div class="name">
-                                <p>Electrolux Food Foundation</p>
-                            </div>
+                <?php foreach ($categories as $category) { ?>
+                    <div class="business-member">
+                        <h2><?= $category->name ?></h2>
+                        <div class="list-member">
+                            <?php 
+                                $member_args = array(
+                                    'post_type' => 'hoi_vien', 
+                                    'tax_query' => array(
+                                        array(
+                                            'taxonomy' => 'danh_muc_hoi_vien',
+                                            'field'    => 'slug',
+                                            'terms'    => $category->slug,
+                                        ),
+                                    ),
+                                );
+                                $members = new WP_Query($member_args);
+
+                                if ($members->have_posts()) : 
+                                    while ($members->have_posts()) : $members->the_post(); 
+                                        $member_id = get_the_ID();
+                                        $member = get_field('member', $member_id);
+                                        $member_count = count($member);
+
+                                        $counter = 0;
+                                        
+                                        foreach ($member as $item){
+                                            $image =  $item['image'];
+                                            $name =  $item['name'];
+                                            if ($counter >= 6) {
+                                                break;
+                                            }
+                                            $counter++;
+                                ?>
+                                <div class="child">
+                                    <img src="<?= $image ?>" alt="">
+                                    <div class="name">
+                                        <p><?= $name ?></p>
+                                    </div>
+                                </div>
+                            <?php } endwhile; 
+                                wp_reset_postdata();
+                                else : ?>
+                                <p>Không có hội viên nào trong danh mục này.</p>
+                            <?php endif; ?>
                         </div>
-                        <div class="child">
-                            <img src="<?= $url ?>/dist/images/business-member-2.png" alt="">
-                            <div class="name">
-                                <p>Electrolux Food Foundation</p>
+                        <?php if ($member_count >= 6) : ?>
+                            <div class="link">
+                                <a href="<?= home_url() ?>/danh_muc_hoi_vien/<?= $category->slug ?>">Xem thêm</a>
                             </div>
-                        </div>
-                        <div class="child">
-                            <img src="<?= $url ?>/dist/images/business-member-3.png" alt="">
-                            <div class="name">
-                                <p>Electrolux Food Foundation</p>
-                            </div>
-                        </div>
-                        <div class="child">
-                            <img src="<?= $url ?>/dist/images/business-member-4.png" alt="">
-                            <div class="name">
-                                <p>Electrolux Food Foundation</p>
-                            </div>
-                        </div>
-                        <div class="child">
-                            <img src="<?= $url ?>/dist/images/business-member-5.png" alt="">
-                            <div class="name">
-                                <p>Electrolux Food Foundation</p>
-                            </div>
-                        </div>
-                        <div class="child">
-                            <img src="<?= $url ?>/dist/images/business-member-6.png" alt="">
-                            <div class="name">
-                                <p>Electrolux Food Foundation</p>
-                            </div>
-                        </div>
-                        <div class="child">
-                            <img src="<?= $url ?>/dist/images/business-member-7.png" alt="">
-                            <div class="name">
-                                <p>Electrolux Food Foundation</p>
-                            </div>
-                        </div>
-                        <div class="child">
-                            <img src="<?= $url ?>/dist/images/business-member-8.png" alt="">
-                            <div class="name">
-                                <p>Electrolux Food Foundation</p>
-                            </div>
-                        </div>
-                        <div class="child">
-                            <img src="<?= $url ?>/dist/images/business-member-9.png" alt="">
-                            <div class="name">
-                                <p>Electrolux Food Foundation</p>
-                            </div>
-                        </div>
+                        <?php endif; ?>
                     </div>
-                    <div class="link">
-                        <a href="http://localhost/project-vica/business-member.php">Xem thêm</a>
-                    </div>
-                </div>
-                <div class="individual-member">
+                <?php } ?>
+                <!-- <div class="individual-member">
                     <h2>Hội viên Cá nhân</h2>
                     <div class="list-member">
                         <div class="child">
@@ -134,7 +132,7 @@ get_header(); ?>
                     <div class="link">
                         <a href="http://localhost/project-vica/individual-member.php">Xem thêm</a>
                     </div>
-                </div>
+                </div> -->
             </div>
             <?php include('section/member-right.php') ?>
         </div>

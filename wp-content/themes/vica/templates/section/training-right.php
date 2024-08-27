@@ -1,3 +1,12 @@
+<?php $args = array(
+    'taxonomy' => 'danh_muc_khoa_hoc',
+    'orderby' => 'name',
+    'hide_empty' => false, 
+);
+
+$categories = get_terms($args); 
+$url = get_template_directory_uri();
+?>
 <div class="right">
     <div class="categoty-content">
         <div class="title">
@@ -5,8 +14,9 @@
         </div>
         <nav>
             <ul>
-                <li class="active"><a href="http://localhost/project-vica/training.php">Các khóa đào tạo online</a></li>
-                <li><a href="http://localhost/project-vica/training1.php">Đào tạo theo yêu cầu</a></li>
+                <?php foreach ($categories as $category) { ?>
+                    <li><a href="<?= home_url() ?>/danh_muc_khoa_hoc/<?= $category->slug ?>"><?= $category->name ?></a></li>
+                <?php } ?>
             </ul>
         </nav>
     </div>

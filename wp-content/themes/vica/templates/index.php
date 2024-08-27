@@ -1,5 +1,15 @@
 <?php 
 /* Template Name: HomePage */
+$id = get_the_ID();
+$banner = get_field('banner', $id);
+$section_4 = get_field('section_4', $id);
+$section_5 = get_field('section_5', $id);
+$partner = get_field('partner', $id);
+// foreach($partner as $item){
+//     var_dump($item['list']);
+// }
+// var_dump($partner);
+// die;
 $url = get_template_directory_uri();
 get_header(); ?>
 <main>
@@ -9,13 +19,13 @@ get_header(); ?>
             <!-- <video autoplay>
                 <source src="<?= $url ?>/dist/images/video-banner.mp4" type="video/mp4">
             </video> -->
-            <img src="<?= $url ?>/dist/images/video.png" alt="">
+            <img src="<?= $banner['image'] ?>" alt="">
             <div class="text">
                 <div class="text-title">
-                    Đào tạo hàng đầu cho những đầu bếp hàng đầu
+                    <?= $banner['title'] ?>
                 </div>
                 <div class="text-content">
-                    Các khóa học được Worldchefs phê duyệt kết nối bạn với chương trình đào tạo phù hợp để giúp bạn phát huy hết tiềm năng của mình.
+                    <?= $banner['content'] ?>
                 </div>
             </div>
         </div>
@@ -368,13 +378,13 @@ get_header(); ?>
         <div class="container">
             <div class="content">
                 <div class="title">
-                    <h3>Đào tạo theo yêu cầu</h3>
+                    <h3><?= $section_4['title'] ?></h3>
                 </div>
                 <div class="description">
-                    <p>Thể hiện kỹ năng của bạn và mở ra con đường sự nghiệp của bạn với Chứng chỉ Khách sạn Toàn cầu.</p>
+                    <p><?= $section_4['description'] ?></p>
                 </div>
                 <div class="button">
-                    <a href="">Đăng ký ngay</a>
+                    <a href="<?= $section_4['button']['link'] ?>"><?= $section_4['button']['text'] ?></a>
                 </div>
             </div>
             <div class="image"></div>
@@ -383,10 +393,10 @@ get_header(); ?>
     <section class="section-5-homepage">
         <div class="container">
             <div class="title">
-                <h3>Hãy tham gia hội viên ngay hôm nay để phát triển nghề bếp của bạn</h3>
+                <h3><?= $section_5['title'] ?></h3>
             </div>
             <div class="button">
-                <a href="">Đăng ký hội viên ngay</a>
+                <a href="<?= $section_5['button']['link'] ?>"><?= $section_5['button']['text'] ?></a>
             </div>
         </div>
     </section>
@@ -619,85 +629,30 @@ get_header(); ?>
                 <div class="list-choose">
                     <nav>
                         <ul>
-                            <li id="tab-platinum" class="active">Đối tác bạch kim</li>
-                            <li id="tab-vip">Đối tác cao cấp</li>
-                            <li id="tab-cooperate">Đối tác hợp tác</li>
-                            <li id="tab-media">Đối tác truyền thông</li>
+                            <?php 
+                            $first = true; // To track the first iteration
+                            foreach($partner as $item){ ?>
+                                <li class="<?= $first ? 'active' : '' ?>"><?= $item['name'] ?></li>
+                            <?php 
+                                $first = false; // Set to false after the first iteration
+                            } ?>
                         </ul>
                     </nav>
                 </div>
                 <div class="list-partner">
-                    <div id="partner-platinum" class="child active">
-                        <div class="image">
-                            <img src="<?= $url ?>/dist/images/partner1.png" alt="">
+                    <?php 
+                    $first = true; // Reset for partner sections
+                    foreach($partner as $item){ ?>
+                        <div class="child <?= $first ? 'active' : '' ?>">
+                            <?php foreach($item['list'] as $image){ ?>
+                                <div class="image">
+                                    <img src="<?= $image['image'] ?>" alt="">
+                                </div>
+                            <?php } ?>
                         </div>
-                        <div class="image">
-                            <img src="<?= $url ?>/dist/images/partner2.png" alt="">
-                        </div>
-                        <div class="image">
-                            <img src="<?= $url ?>/dist/images/partner3.png" alt="">
-                        </div>
-                        <div class="image">
-                            <img src="<?= $url ?>/dist/images/partner4.png" alt="">
-                        </div>
-                        <div class="image">
-                            <img src="<?= $url ?>/dist/images/partner5.png" alt="">
-                        </div>
-                        <div class="image">
-                            <img src="<?= $url ?>/dist/images/partner6.png" alt="">
-                        </div>
-                        <div class="image">
-                            <img src="<?= $url ?>/dist/images/partner7.png" alt="">
-                        </div>
-                        <div class="image">
-                            <img src="<?= $url ?>/dist/images/partner8.png" alt="">
-                        </div>
-                        <div class="image">
-                            <img src="<?= $url ?>/dist/images/partner9.png" alt="">
-                        </div>
-                    </div>
-                    <div id="partner-vip" class="child">
-                        <div class="image">
-                            <img src="<?= $url ?>/dist/images/partner1.png" alt="">
-                        </div>
-                        <div class="image">
-                            <img src="<?= $url ?>/dist/images/partner2.png" alt="">
-                        </div>
-                        <div class="image">
-                            <img src="<?= $url ?>/dist/images/partner3.png" alt="">
-                        </div>
-                        <div class="image">
-                            <img src="<?= $url ?>/dist/images/partner4.png" alt="">
-                        </div>
-                    </div>
-                    <div id="partner-cooperate" class="child">
-                        <div class="image">
-                            <img src="<?= $url ?>/dist/images/partner5.png" alt="">
-                        </div>
-                        <div class="image">
-                            <img src="<?= $url ?>/dist/images/partner3.png" alt="">
-                        </div>
-                        <div class="image">
-                            <img src="<?= $url ?>/dist/images/partner8.png" alt="">
-                        </div>
-                        <div class="image">
-                            <img src="<?= $url ?>/dist/images/partner4.png" alt="">
-                        </div>
-                    </div>
-                    <div id="partner-media" class="child">
-                        <div class="image">
-                            <img src="<?= $url ?>/dist/images/partner1.png" alt="">
-                        </div>
-                        <div class="image">
-                            <img src="<?= $url ?>/dist/images/partner7.png" alt="">
-                        </div>
-                        <div class="image">
-                            <img src="<?= $url ?>/dist/images/partner9.png" alt="">
-                        </div>
-                        <div class="image">
-                            <img src="<?= $url ?>/dist/images/partner6.png" alt="">
-                        </div>
-                    </div>
+                    <?php 
+                        $first = false; // Set to false after the first iteration
+                    } ?>
                 </div>
             </div>
         </div>

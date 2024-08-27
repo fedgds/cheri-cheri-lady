@@ -242,12 +242,6 @@
                             Công ty SHN đang tìm kiếm một Chuyên Viên Quản Lý Dự Án đầy đam mê và có kỹ năng xuất sắc để tham gia vào đội ngũ của chúng tôi. Với sứ mệnh "Cháy Hết Mình" và tầm nhìn xây dựng tương lai bền vững, chúng tôi cần bạn để thực hiện các dự án quan trọng và đóng góp vào thành công của chúng tôi.
                         </div>
                     </div>
-                    <div class="salary">
-                        <h3>Mức lương</h3>
-                        <div class="text-content">
-                            Công ty SHN đang tìm kiếm một Chuyên Viên Quản Lý Dự Án đầy đam mê và có kỹ năng xuất sắc để tham gia vào đội ngũ của chúng tôi. Với sứ mệnh "Cháy Hết Mình" và tầm nhìn xây dựng tương lai bền vững, chúng tôi cần bạn để thực hiện các dự án quan trọng và đóng góp vào thành công của chúng tôi.
-                        </div>
-                    </div>
                     <div class="infor-contact">
                         <h3>Thông tin liên hệ</h3>
                         <ul>

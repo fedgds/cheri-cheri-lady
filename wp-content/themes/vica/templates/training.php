@@ -1,4 +1,15 @@
-<?php include('header.php') ?>
+<?php 
+/* Template Name: training */
+$args = array(
+    'taxonomy' => 'danh_muc_khoa_hoc',
+    'orderby' => 'name',
+    'hide_empty' => false, 
+);
+
+$categories = get_terms($args);
+
+$url = get_template_directory_uri();
+get_header(); ?>
 <main>
     <?php include('section/section-banner-training.php') ?>
     <section class="section-list-training">
@@ -14,188 +25,62 @@
                     <input type="text" id="search-member" placeholder="Tìm kiếm khóa học...">
                     <button>Tìm kiếm</button>
                 </form>
-                <div class="course">
-                    <div class="child">
-                        <a href=""><img src="<?= $url ?>/dist/images/training-course.png" alt=""></a>
-                        <div class="content">
-                            <a href=""><h3>Chương trình đào tạo nấu món 
-                            Nhật Bản</h3></a>
-                            <div class="journey">
-                                <p>Lộ trình:</p>
-                                <b>10 ngày</b>
-                            </div>
-                            <div class="trainer">
-                                <p>Người đào tạo:</p>
-                                <b>Master Chef Nguyễn Thường Quân</b>
-                            </div>
-                        </div>
+                <?php foreach ($categories as $category) { ?>
+                    <h2 class="course-name"><?= $category->name ?></h2>
+                    <div class="course">
+                        <?php 
+                            $course_args = array(
+                                'post_type' => 'khoa_hoc', 
+                                'posts_per_page' => 3,
+                                'tax_query' => array(
+                                    array(
+                                        'taxonomy' => 'danh_muc_khoa_hoc',
+                                        'field'    => 'slug',
+                                        'terms'    => $category->slug,
+                                    ),
+                                ),
+                            );
+                            $courses = new WP_Query($course_args);
+ 
+                            $course_count = $courses->found_posts;
+                            
+                            if ($courses->have_posts()) : 
+                                while ($courses->have_posts()) : $courses->the_post(); 
+                                    $course_id = get_the_ID();
+                                    $course = get_field('course', $course_id);
+                                    $thumbnail_url = get_the_post_thumbnail_url(get_the_ID(), 'full');
+                                    $training_time = $course['training_time'];
+                                    $trainer_name = $course['trainer'][0]['name'];
+                                    $trainer_position = $course['trainer'][0]['position'];
+                        ?>
+                                    <div class="child">
+                                        <a href="<?php the_permalink(); ?>"><img src="<?= esc_url($thumbnail_url) ?>" alt=""></a>
+                                        <div class="content">
+                                            <a href="<?php the_permalink(); ?>">
+                                                <h3><?php the_title(); ?></h3>
+                                            </a>
+                                            <div class="journey">
+                                                <p>Lộ trình:</p>
+                                                <b><?= $training_time ?></b>
+                                            </div>
+                                            <div class="trainer">
+                                                <p>Người đào tạo:</p>
+                                                <b><?= $trainer_position ?> <?= $trainer_name ?></b>
+                                            </div>
+                                        </div>
+                                    </div>
+                                <?php endwhile; 
+                                wp_reset_postdata();
+                                else : ?>
+                                <p>Không có khóa học nào trong danh mục này.</p>
+                        <?php endif; ?>
                     </div>
-                    <div class="child">
-                        <a href="http://localhost/project-vica/detail-course-training.php"><img src="<?= $url ?>/dist/images/training-course.png" alt=""></a>
-                        <div class="content">
-                            <a href="http://localhost/project-vica/detail-course-training.php"><h3>Chương trình đào tạo nấu món 
-                            Nhật Bản</h3></a>
-                            <div class="journey">
-                                <p>Lộ trình:</p>
-                                <b>10 ngày</b>
-                            </div>
-                            <div class="trainer">
-                                <p>Người đào tạo:</p>
-                                <b>Master Chef Nguyễn Thường Quân</b>
-                            </div>
+                    <?php if ($course_count > 2) : ?>
+                        <div class="view-more">
+                            <a href="<?= home_url() ?>/danh_muc_khoa_hoc/<?= $category->slug ?>">Xem thêm</a>
                         </div>
-                    </div>
-                    <div class="child">
-                        <a href=""><img src="<?= $url ?>/dist/images/training-course.png" alt=""></a>
-                        <div class="content">
-                            <a href=""><h3>Chương trình đào tạo nấu món 
-                            Nhật Bản</h3></a>
-                            <div class="journey">
-                                <p>Lộ trình:</p>
-                                <b>10 ngày</b>
-                            </div>
-                            <div class="trainer">
-                                <p>Người đào tạo:</p>
-                                <b>Master Chef Nguyễn Thường Quân</b>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="child">
-                        <a href=""><img src="<?= $url ?>/dist/images/training-course.png" alt=""></a>
-                        <div class="content">
-                            <a href=""><h3>Chương trình đào tạo nấu món 
-                            Nhật Bản</h3></a>
-                            <div class="journey">
-                                <p>Lộ trình:</p>
-                                <b>10 ngày</b>
-                            </div>
-                            <div class="trainer">
-                                <p>Người đào tạo:</p>
-                                <b>Master Chef Nguyễn Thường Quân</b>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="child">
-                        <a href=""><img src="<?= $url ?>/dist/images/training-course.png" alt=""></a>
-                        <div class="content">
-                            <a href=""><h3>Chương trình đào tạo nấu món 
-                            Nhật Bản</h3></a>
-                            <div class="journey">
-                                <p>Lộ trình:</p>
-                                <b>10 ngày</b>
-                            </div>
-                            <div class="trainer">
-                                <p>Người đào tạo:</p>
-                                <b>Master Chef Nguyễn Thường Quân</b>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="child">
-                        <a href=""><img src="<?= $url ?>/dist/images/training-course.png" alt=""></a>
-                        <div class="content">
-                            <a href=""><h3>Chương trình đào tạo nấu món 
-                            Nhật Bản</h3></a>
-                            <div class="journey">
-                                <p>Lộ trình:</p>
-                                <b>10 ngày</b>
-                            </div>
-                            <div class="trainer">
-                                <p>Người đào tạo:</p>
-                                <b>Master Chef Nguyễn Thường Quân</b>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="child">
-                        <a href=""><img src="<?= $url ?>/dist/images/training-course.png" alt=""></a>
-                        <div class="content">
-                            <a href=""><h3>Chương trình đào tạo nấu món 
-                            Nhật Bản</h3></a>
-                            <div class="journey">
-                                <p>Lộ trình:</p>
-                                <b>10 ngày</b>
-                            </div>
-                            <div class="trainer">
-                                <p>Người đào tạo:</p>
-                                <b>Master Chef Nguyễn Thường Quân</b>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="child">
-                        <a href=""><img src="<?= $url ?>/dist/images/training-course.png" alt=""></a>
-                        <div class="content">
-                            <a href=""><h3>Chương trình đào tạo nấu món 
-                            Nhật Bản</h3></a>
-                            <div class="journey">
-                                <p>Lộ trình:</p>
-                                <b>10 ngày</b>
-                            </div>
-                            <div class="trainer">
-                                <p>Người đào tạo:</p>
-                                <b>Master Chef Nguyễn Thường Quân</b>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="child">
-                        <a href=""><img src="<?= $url ?>/dist/images/training-course.png" alt=""></a>
-                        <div class="content">
-                            <a href=""><h3>Chương trình đào tạo nấu món 
-                            Nhật Bản</h3></a>
-                            <div class="journey">
-                                <p>Lộ trình:</p>
-                                <b>10 ngày</b>
-                            </div>
-                            <div class="trainer">
-                                <p>Người đào tạo:</p>
-                                <b>Master Chef Nguyễn Thường Quân</b>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="child">
-                        <a href=""><img src="<?= $url ?>/dist/images/training-course.png" alt=""></a>
-                        <div class="content">
-                            <a href=""><h3>Chương trình đào tạo nấu món 
-                            Nhật Bản</h3></a>
-                            <div class="journey">
-                                <p>Lộ trình:</p>
-                                <b>10 ngày</b>
-                            </div>
-                            <div class="trainer">
-                                <p>Người đào tạo:</p>
-                                <b>Master Chef Nguyễn Thường Quân</b>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="child">
-                        <a href=""><img src="<?= $url ?>/dist/images/training-course.png" alt=""></a>
-                        <div class="content">
-                            <a href=""><h3>Chương trình đào tạo nấu món 
-                            Nhật Bản</h3></a>
-                            <div class="journey">
-                                <p>Lộ trình:</p>
-                                <b>10 ngày</b>
-                            </div>
-                            <div class="trainer">
-                                <p>Người đào tạo:</p>
-                                <b>Master Chef Nguyễn Thường Quân</b>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="child">
-                        <a href=""><img src="<?= $url ?>/dist/images/training-course.png" alt=""></a>
-                        <div class="content">
-                            <a href=""><h3>Chương trình đào tạo nấu món 
-                            Nhật Bản</h3></a>
-                            <div class="journey">
-                                <p>Lộ trình:</p>
-                                <b>10 ngày</b>
-                            </div>
-                            <div class="trainer">
-                                <p>Người đào tạo:</p>
-                                <b>Master Chef Nguyễn Thường Quân</b>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                    <?php endif; ?>
+                <?php } ?>
             </div>
             <?php include('section/training-right.php') ?>
         </div>
@@ -203,4 +88,4 @@
 
     <?php include('section/section-8-homepage.php') ?>
 </main>
-<?php include('footer.php') ?>l
+<?php get_footer(); ?>

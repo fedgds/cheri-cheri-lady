@@ -1,4 +1,7 @@
-<?php include('header.php') ?>
+<?php 
+/* Template Name: login */
+$url = get_template_directory_uri();
+get_header(); ?>
 <main>
     <section class="login-page">
         <div id="backdrop-forgot-password" class="backdrop"></div>
@@ -41,7 +44,7 @@
                     </div>
                     <div class="register">
                         <p>Bạn chưa có tài khoản?</p>
-                        <a href="http://localhost/project-vica/signup.php">Đăng ký ngay</a>
+                        <a href="<?= home_url() ?>/dang-ky">Đăng ký ngay</a>
                     </div>
                 </form>
             </div>
@@ -134,4 +137,4 @@
         </div>
     </section>
 </main>
-<?php include('footer.php') ?>
+<?php get_footer(); ?>

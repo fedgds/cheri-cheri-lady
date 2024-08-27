@@ -1,4 +1,7 @@
-<?php include('header.php') ?>
+<?php 
+/* Template Name: contact */
+$url = get_template_directory_uri();
+get_header(); ?>
 <main>
     <section class="section-banner-contact">
         <div class="background"></div>
@@ -217,4 +220,4 @@
 
     <?php include('section/section-8-homepage.php') ?>
 </main>
-<?php include('footer.php') ?>
+<?php get_footer(); ?>

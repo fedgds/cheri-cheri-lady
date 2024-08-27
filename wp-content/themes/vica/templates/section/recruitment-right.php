@@ -5,8 +5,8 @@
         </div>
         <nav>
             <ul>
-                <li class="active"><a href="http://localhost/project-vica/recruitment.php">Đăng tuyển việc làm</a></li>
-                <li><a href="http://localhost/project-vica/recruitment1.php">Thông tin tuyển dụng</a></li>
+                <li class="active"><a href="<?= home_url() ?>/thong-tin-tuyen-dung">Thông tin tuyển dụng</a></li>
+                <li><a href="<?= home_url() ?>/dang-tuyen-viec-lam">Đăng tuyển việc làm</a></li>
             </ul>
         </nav>
     </div>

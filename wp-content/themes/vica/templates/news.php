@@ -1,4 +1,7 @@
-<?php include('header.php') ?>
+<?php 
+/* Template Name: news */
+$url = get_template_directory_uri();
+get_header(); ?>
 <main>
     <?php include('section/section-banner-news.php') ?>
     <section class="section-news">
@@ -397,4 +400,4 @@
     </section>
     <?php include('section/section-8-homepage.php') ?>
 </main>
-<?php include('footer.php') ?>
+<?php get_footer(); ?>

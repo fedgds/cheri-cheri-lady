@@ -4599,6 +4599,9 @@ main {
                         row-gap: 1rem;
                         column-gap: 9.25rem;
                         margin-bottom: 3rem;
+                        @include Responsive(m-4) {
+                            column-gap: 0rem;
+                        }
 
                         .child {
                             display: flex;
@@ -5284,9 +5287,27 @@ main {
                         background-color: var(--white);
                     }
                 }
-
+            
+                h2.course-name {
+                    font-family: var(--f-body);
+                    color: #1D1D1D;
+                    font-size: 2rem;
+                    font-weight: 700;
+                    line-height: 150%;
+                    margin-top: 2rem;
+                    margin-bottom: 2rem;
+                    @include Responsive(m-10) {
+                        font-size: 1.75rem;
+                        margin-top: 1.5rem;
+                    }
+                    @include Responsive(m-7) {
+                        font-size: 1.25rem;
+                        margin-bottom: 1rem;
+                    }
+                }
                 .course {
                     margin-top: 3rem;
+                    margin-bottom: 2rem;
                     display: grid;
                     grid-template-columns: 1fr 1fr 1fr;
                     row-gap: 1.5rem;
@@ -5294,6 +5315,11 @@ main {
                     @include Responsive(m-7) {
                         grid-template-columns: 1fr 1fr;
                         column-gap: 1rem;
+                        margin-bottom: 2rem;
+                    }    
+                    .hollow{
+                        width: 100%;
+                        font-family: var(--f-body);
                     }
 
                     .child {
@@ -5358,6 +5384,30 @@ main {
                                 flex-direction: column;
                             }
                         }
+                    }
+                }
+                .view-more {
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+    
+                    a {
+                        color: #ED1E29;
+                        border: 1px solid #ED1E29;
+                        background-color: var(--white);
+                        padding: .6875rem 3rem;
+                        font-size: .875rem;
+                        font-weight: 700;
+                        line-height: 150%;
+                        border-radius: 3.125rem;
+                        @include Responsive(m-7) {
+                            padding: .5rem 2rem;
+                        }
+                    }
+    
+                    a:hover {
+                        background-color: #ED1E29;
+                        color: var(--white);
                     }
                 }
             }
@@ -7550,6 +7600,23 @@ main {
                     border: 0.5px solid var(--Text-400, #999);
                     background: var(--HEADER, #FFF);
                     box-shadow: 0px 20px 60px 0px rgba(224, 161, 161, 0.05);
+                    .search-date-1, .search-date-2 {
+                        position: relative;
+                        padding-left: 1rem;
+                        @include Responsive(m-14) {
+                            padding-left: .5rem;
+                        }
+                    }
+                    .search-date-1::before, .search-date-2::before{
+                        content: "";
+                        position: absolute;
+                        left: 0;
+                        top: 50%;
+                        transform: translateY(-50%);
+                        height: 50%;
+                        width: 1px;
+                        background-color: #999;
+                    }
 
                     .item {
                         display: flex;
@@ -7563,13 +7630,11 @@ main {
 
                         select {
                             border: none;
-                            border-right: 1px solid #999;
                         }
 
                         input {
                             padding-right: .625rem;
                             border: none;
-                            border-right: 1px solid #999;
                         }
 
                         input::placeholder {

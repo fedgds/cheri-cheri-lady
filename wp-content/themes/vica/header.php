@@ -56,12 +56,12 @@ $url = get_template_directory_uri();
                     <ul class="nav-menu">
                         <li><a class="active" href="<?= home_url() ?>/ve-vica">Giới thiệu</a></li>
                         <li><a href="<?= home_url() ?>/danh-sach-hoi-vien">Hội viên</a></li>
-                        <li><a href="<?= home_url() ?>/training.php">Đào tạo</a></li>
-                        <li><a href="<?= home_url() ?>/recruitment.php">Cơ hội việc làm</a></li>
-                        <li><a href="<?= home_url() ?>/project.php">Dự án</a></li>
-                        <li><a href="<?= home_url() ?>/database.php">Cơ sở dữ liệu</a></li>
-                        <li><a href="<?= home_url() ?>/event.php">Sự kiện</a></li>
-                        <li><a href="<?= home_url() ?>/news.php">Tin tức</a></li>
+                        <li><a href="<?= home_url() ?>/cac-khoa-dao-tao">Đào tạo</a></li>
+                        <li><a href="<?= home_url() ?>/thong-tin-tuyen-dung">Cơ hội việc làm</a></li>
+                        <li><a href="<?= home_url() ?>/du-an">Dự án</a></li>
+                        <li><a href="<?= home_url() ?>/bao-cao-thong-ke">Cơ sở dữ liệu</a></li>
+                        <li><a href="<?= home_url() ?>/su-kien">Sự kiện</a></li>
+                        <li><a href="<?= home_url() ?>/tin-tuc">Tin tức</a></li>
                     </ul>
                 </nav>
             </div>

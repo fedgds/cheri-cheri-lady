@@ -5,11 +5,11 @@
         </div>
         <nav>
             <ul>
-                <li class="active"><a href="http://localhost/project-vica/database.php">Báo cáo/Thống kê</a></li>
-                <li><a href="http://localhost/project-vica/database1.php">Văn bản Hiệp hội</a></li>
-                <li><a href="http://localhost/project-vica/database1.php">Văn bản pháp luật</a></li>
-                <li><a href="http://localhost/project-vica/database2.php">Thư viện ảnh</a></li>
-                <li><a href="http://localhost/project-vica/database3.php">Công thức món ăn</a></li>
+                <li class="active"><a href="<?= home_url() ?>/bao-cao-thong-ke">Báo cáo/Thống kê</a></li>
+                <li><a href="<?= home_url() ?>/van-ban-hiep-hoi">Văn bản Hiệp hội</a></li>
+                <li><a href="<?= home_url() ?>/van-ban-phap-luat">Văn bản pháp luật</a></li>
+                <li><a href="<?= home_url() ?>/thu-vien-anh">Thư viện ảnh</a></li>
+                <li><a href="<?= home_url() ?>/cong-thuc-mon-an">Công thức món ăn</a></li>
             </ul>
         </nav>
     </div>

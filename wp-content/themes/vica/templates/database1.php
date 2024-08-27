@@ -1,4 +1,7 @@
-<?php include('header.php') ?>
+<?php 
+/* Template Name: database1 */
+$url = get_template_directory_uri();
+get_header(); ?>
 <main>
     <?php include('section/section-banner-database.php') ?>
     <section class="section-document-database">
@@ -24,4 +27,4 @@
 
     <?php include('section/section-8-homepage.php') ?>
 </main>
-<?php include('footer.php') ?>
+<?php get_footer(); ?>

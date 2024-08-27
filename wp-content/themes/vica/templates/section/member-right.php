@@ -1,3 +1,6 @@
+<?php
+$url = get_template_directory_uri();
+?>
 <div class="right">
     <div class="categoty-content">
         <div class="title">
